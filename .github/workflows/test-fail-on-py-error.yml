@@ -1,0 +1,17 @@
+name: test workflow fail once py raises exception
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run
+        run: |
+          echo "abc"
+          python test.py
+          echo "123"
