@@ -1,0 +1,15 @@
+name: foo
+
+on:
+  push:
+    branches:
+      - main123
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run
+        run: |
+          echo "hi"
