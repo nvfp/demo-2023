@@ -1,0 +1,20 @@
+name: test git add push cmt
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  on:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "foo" >> .gitignore
+      - uses: scapeville/action-git-add-all-then-commit-then-push@v1
+        with:
+          email: nicho@scapeville.com
+        env:
+          GH_TOKEN: ${{ github.token }}
