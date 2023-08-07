@@ -12,7 +12,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
-      - run: echo "foo" >> .gitignore
+      - run: echo "" >> .gitignore
       - uses: scapeville/action-git-add-all-then-commit-then-push@v1
         with:
           email: nicho@scapeville.com
