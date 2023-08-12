@@ -11,25 +11,25 @@ jobs:
     steps:
       - run: |
           echo "pwd: $(pwd)"
-          echo ls
+          ls
       - uses: actions/checkout@v3
       - run: |
           echo "pwd: $(pwd)"
-          echo ls
+          ls
       - run: |
           echo "pwd: $(pwd)"
-          echo ls
+          ls
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo "pwd: $(pwd)"
-          echo ls
+          ls
       - uses: actions/checkout@v3
       - run: |
           echo "pwd: $(pwd)"
-          echo ls
+          ls
       - run: |
           echo "pwd: $(pwd)"
-          echo ls
+          ls
