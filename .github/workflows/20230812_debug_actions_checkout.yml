@@ -8,18 +8,86 @@ on:
     branches:
       - main
 
+
+
+## Using fetch depth
+# jobs:
+#   modify-and-commit:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write  # For committing
+#     steps:
+#       - run: |
+#           echo "::group::ls $(pwd)"
+#           ls
+#           echo "::endgroup::"
+#       - uses: actions/checkout@v3
+#       - run: |
+#           echo "::group::ls $(pwd)"
+#           ls
+#           echo "::endgroup::"
+
+#           ## Make changes
+#           echo $(date +"%T") > foo.txt
+
+#           echo "::group::ls $(pwd)"
+#           ls
+#           echo "::endgroup::"
+
+#           ## COMMIT
+#           git config user.name "testing"
+#           git config user.email "b6dbdde63@efa3a3311"
+#           git add .
+#           git commit -m "testing..."
+#           git push
+#   checkout-again:
+#     needs: modify-and-commit
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0
+#       - run: |
+#           echo "::group::ls $(pwd)"
+#           ls
+#           echo "::endgroup::"
+
+#           ## This still will NOT show the commit from the previous job
+#           echo "::group::git log I"
+#           git log -5
+#           echo "::endgroup::"
+
+#           ## Manual pull
+#           echo "::group::Manual pull"
+#           git pull
+#           echo "::endgroup::"
+
+#           ## Now, the previous commit is present
+#           echo "::group::git log II"
+#           git log -5
+#           echo "::endgroup::"
+
+
+
+
+
+## Using commit SHA.
+## Ref: https://stackoverflow.com/questions/73879978/how-to-create-a-github-action-to-checkout-a-specific-commit-in-a-private-reposit
 jobs:
   modify-and-commit:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # For committing
+    outputs:
+      sha: ${{ steps.get-sha.outputs.sha }}
     steps:
       - run: |
           echo "::group::ls $(pwd)"
           ls
           echo "::endgroup::"
       - uses: actions/checkout@v3
-      - run: |
+      - id: get-sha
+        run: |
           echo "::group::ls $(pwd)"
           ls
           echo "::endgroup::"
@@ -37,21 +105,24 @@ jobs:
           git add .
           git commit -m "testing..."
           git push
+
+          ## Store the SHA
+          echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
   checkout-again:
     needs: modify-and-commit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: ${{ needs.modify-and-commit.outputs.sha }}
       - run: |
           echo "::group::ls $(pwd)"
           ls
           echo "::endgroup::"
 
-          ## This will NOT show the commit at the previous job
+          ## This still will NOT show the commit from the previous job
           echo "::group::git log I"
-          git log
+          git log -5
           echo "::endgroup::"
 
           ## Manual pull
@@ -59,7 +130,7 @@ jobs:
           git pull
           echo "::endgroup::"
 
-          ## Now, the previous commit is there
+          ## Now, the previous commit is present
           echo "::group::git log II"
-          git log
+          git log -5
           echo "::endgroup::"
