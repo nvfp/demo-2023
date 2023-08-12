@@ -19,27 +19,43 @@ jobs:
       contents: write  # For committing
     steps:
       - run: |
-          echo "pwd: $(pwd)"
+          echo "::group::ls $(pwd)"
           ls
+          echo "::endgroup::"
       - uses: actions/checkout@v3
       - run: |
-          echo "pwd: $(pwd)"
+          echo "::group::ls $(pwd)"
           ls
+          echo "::endgroup::"
+
           echo $(date +"%T") > foo.txt
-          echo "-------"
+
+          echo "::group::ls $(pwd)"
           ls
-      - uses: scapeville/action-git-add-all-then-commit-then-push@v1
+          echo "::endgroup::"
+
+          ## INTERNAL
+          git config user.name "testing"
+          git config user.email "b6dbdde63@efa3a3311"
+          git add .
+          git commit -m "testing..."
+          git push
+      # - uses: scapeville/action-git-add-all-then-commit-then-push@v1  # EXTERNAL
   checkout-again:
     needs: modify-and-commit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: |
+          echo "::group::ls $(pwd)"
+          ls
+          echo "::endgroup::"
+
           echo "::group::git log I"
           git log
           echo "::endgroup::"
 
-          echo "::group::git log II"
+          echo "::group::Manual pull"
           git pull
           echo "::endgroup::"
 
