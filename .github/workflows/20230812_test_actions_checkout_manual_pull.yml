@@ -35,12 +35,12 @@ jobs:
           echo "::endgroup::"
 
           ## INTERNAL
-          git config user.name "testing"
-          git config user.email "b6dbdde63@efa3a3311"
-          git add .
-          git commit -m "testing..."
-          git push
-      # - uses: scapeville/action-git-add-all-then-commit-then-push@v1  # EXTERNAL
+          # git config user.name "testing"
+          # git config user.email "b6dbdde63@efa3a3311"
+          # git add .
+          # git commit -m "testing..."
+          # git push
+      - uses: scapeville/action-git-add-all-then-commit-then-push@v1  # EXTERNAL
   checkout-again:
     needs: modify-and-commit
     runs-on: ubuntu-latest
