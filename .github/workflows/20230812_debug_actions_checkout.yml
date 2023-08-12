@@ -1,0 +1,65 @@
+## This test is the continuation of "manual pull is required for actions checkout".
+
+
+name: try use sha and fetch depth
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  modify-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # For committing
+    steps:
+      - run: |
+          echo "::group::ls $(pwd)"
+          ls
+          echo "::endgroup::"
+      - uses: actions/checkout@v3
+      - run: |
+          echo "::group::ls $(pwd)"
+          ls
+          echo "::endgroup::"
+
+          ## Make changes
+          echo $(date +"%T") > foo.txt
+
+          echo "::group::ls $(pwd)"
+          ls
+          echo "::endgroup::"
+
+          ## COMMIT
+          git config user.name "testing"
+          git config user.email "b6dbdde63@efa3a3311"
+          git add .
+          git commit -m "testing..."
+          git push
+  checkout-again:
+    needs: modify-and-commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - run: |
+          echo "::group::ls $(pwd)"
+          ls
+          echo "::endgroup::"
+
+          ## This will NOT show the commit at the previous job
+          echo "::group::git log I"
+          git log
+          echo "::endgroup::"
+
+          ## Manual pull
+          echo "::group::Manual pull"
+          git pull
+          echo "::endgroup::"
+
+          ## Now, the previous commit is there
+          echo "::group::git log II"
+          git log
+          echo "::endgroup::"
