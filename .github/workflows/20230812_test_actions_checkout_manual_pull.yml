@@ -1,0 +1,46 @@
+## Manual pull is somehow needed when performing a GitHub
+## Actions checkout in multiple jobs. If not pulled,
+## the repository will not be updated.
+
+## note: tried this out while writing a blog (nvfp.github.io) about
+##       needing to manually pull for GitHub Actions checkout with multiple jobs.
+
+name: manual pull required for actions checkout
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  modify-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "pwd: $(pwd)"
+          ls
+      - uses: actions/checkout@v3
+      - run: |
+          echo "pwd: $(pwd)"
+          ls
+          echo $(date +"%T") > foo.txt
+          echo "-------"
+          ls
+      - uses: scapeville/action-git-add-all-then-commit-then-push@v1
+  checkout-again:
+    needs: modify-and-commit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          echo "::group::git log I"
+          git log
+          echo "::endgroup::"
+
+          echo "::group::git log II"
+          git pull
+          echo "::endgroup::"
+
+          echo "::group::git log II"
+          git log
+          echo "::endgroup::"
