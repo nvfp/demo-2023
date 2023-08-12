@@ -5,6 +5,9 @@
 ## note: tried this out while writing a blog (nvfp.github.io) about
 ##       needing to manually pull for GitHub Actions checkout with multiple jobs.
 
+## note: Is this a bug, or did I miss something here?  ~Nicholas@20230812
+
+
 name: manual pull required for actions checkout
 
 on:
@@ -28,11 +31,14 @@ jobs:
           ls
           echo "::endgroup::"
 
+          ## Make changes
           echo $(date +"%T") > foo.txt
 
           echo "::group::ls $(pwd)"
           ls
           echo "::endgroup::"
+
+          ## COMMIT
 
           ## INTERNAL
           # git config user.name "testing"
@@ -51,14 +57,17 @@ jobs:
           ls
           echo "::endgroup::"
 
+          ## This will NOT show the commit at the previous job
           echo "::group::git log I"
           git log
           echo "::endgroup::"
 
+          ## Manual pull
           echo "::group::Manual pull"
           git pull
           echo "::endgroup::"
 
+          ## Now, the previous commit is there
           echo "::group::git log II"
           git log
           echo "::endgroup::"
