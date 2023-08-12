@@ -11,25 +11,25 @@ jobs:
     steps:
       - run: |
           echo "pwd: $(pwd)"
-          ls
+          ls  # nothing
       - uses: actions/checkout@v3
       - run: |
           echo "pwd: $(pwd)"
-          ls
+          ls  # archives folder listed
       - run: |
           echo "pwd: $(pwd)"
-          ls
+          ls  # archives folder listed
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo "pwd: $(pwd)"
-          ls
+          ls  # nothing again
       - uses: actions/checkout@v3
       - run: |
           echo "pwd: $(pwd)"
-          ls
+          ls  # archives folder listed
       - run: |
           echo "pwd: $(pwd)"
-          ls
+          ls  # archives folder listed
