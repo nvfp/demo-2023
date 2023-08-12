@@ -1,0 +1,35 @@
+name: Test GITHUB_WORKSPACE state from one job to another
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "pwd: $(pwd)"
+          echo ls
+      - uses: actions/checkout@v3
+      - run: |
+          echo "pwd: $(pwd)"
+          echo ls
+      - run: |
+          echo "pwd: $(pwd)"
+          echo ls
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "pwd: $(pwd)"
+          echo ls
+      - uses: actions/checkout@v3
+      - run: |
+          echo "pwd: $(pwd)"
+          echo ls
+      - run: |
+          echo "pwd: $(pwd)"
+          echo ls
