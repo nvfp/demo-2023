@@ -1,0 +1,19 @@
+name: Check npm package name availability
+
+on:
+  workflow_dispatch:
+    inputs:
+      names:
+        description: 'names'
+        required: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+            node-version: 16
+      - run: npm install --global npm-name-cli
+      - run: npm-name ${{ inputs.names }}
