@@ -1,0 +1,16 @@
+name: learn repo state between jobs
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls
+      - uses: actions/checkout@v3
+      - run: ls
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls
+      - uses: actions/checkout@v3
+      - run: ls
