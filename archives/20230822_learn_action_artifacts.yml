@@ -28,4 +28,4 @@ jobs:
       - run: ls
       - run: ls foo123.txt
       # - run: cat foo123.txt  # failed: foo123.txt is a dir
-      - run: cat foo123.txt/foo123.txt
+      - run: cat foo123.txt/foo123.txt  # success
