@@ -1,0 +1,31 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+      - run: gem install bundler && bundle install  # Install dependencies
+      - run: bundle exec jekyll build  # Build Jekyll site
+      - run: ls _site  # Debugging
+      - uses: actions/upload-pages-artifact@v2  # Upload artifact
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v2  # Deploy to GitHub Pages

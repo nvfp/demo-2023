@@ -1,0 +1,6 @@
+baseurl: '/demo-2023'
+url: https://nvfp.github.io
+
+## Redirection purposes
+plugins:                  # Comment these out when doing local development
+  - jekyll-redirect-from  # Comment these out when doing local development

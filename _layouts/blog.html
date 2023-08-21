@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>test abc</title>
+</head>
+
+<body>
+    <main>
+        <p title="{{ page.posted_date | date: '%B %-d, %Y' }}">
+            Posted {{ page.posted_date | get_relative_time }}
+        </p>
+        {{ content }}
+    </main>
+</body>
+</html>
