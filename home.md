@@ -2,7 +2,6 @@
 layout: blog
 posted_date: 2023-08-17
 permalink: /
-redirect_from: /
 ---
 
 posted_date: 2023-08-17
