@@ -4,14 +4,14 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: ls
+      - run: ls  # Nothing
       - uses: actions/checkout@v3
-      - run: ls
+      - run: ls  # some files
 
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - run: ls
+      - run: ls  # nothing again
       - uses: actions/checkout@v3
-      - run: ls
+      - run: ls  # files present
