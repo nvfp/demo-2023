@@ -1,0 +1,27 @@
+name: learn actions artifact
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls
+      - run: echo "foo" > foo123.txt
+      - run: ls
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-artifact
+          path: foo123.txt
+          if-no-files-found: error
+      - run: ls
+  
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls
+      - uses: actions/download-artifact@v3
+        with:
+          name: test-artifact
+          path: foo123.txt
+      - run: ls
+      - run: cat foo123.txt
