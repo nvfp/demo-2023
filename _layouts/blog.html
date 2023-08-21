@@ -6,8 +6,11 @@
 
 <body>
     <main>
-        <p title="{{ page.posted_date | date: '%B %-d, %Y' }}">
+        <p>
             Posted {{ page.posted_date | get_relative_time }}
+        </p>
+        <p>
+            rel seconds {{ page.posted_date | get_relative_seconds }}
         </p>
         {{ content }}
     </main>

@@ -41,6 +41,20 @@ module GetRelativeTime
 
     approx
   end
+  
+  def get_relative_seconds(posted_date)
+
+    if posted_date.nil?
+      return "date not provided..."
+    end
+
+    curr_ts = Time.now.to_i  # Current timestamp
+    post_ts = Time.parse(posted_date.to_s).to_i
+
+    elapsed_time = curr_ts - post_ts
+
+    "#{elapsed_time} seconds ago"
+  end
 end
 
 Liquid::Template.register_filter(GetRelativeTime)
