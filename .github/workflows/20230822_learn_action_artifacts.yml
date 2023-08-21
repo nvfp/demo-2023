@@ -13,6 +13,7 @@ jobs:
           path: foo123.txt
           if-no-files-found: error
       - run: ls
+      - run: cat foo123.txt
       - run: ls foo123.txt
   
   job2:
