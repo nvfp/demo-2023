@@ -1,0 +1,18 @@
+name: learn defaults
+description: foo
+author: foo
+branding:
+  icon: moon
+  color: gray-dark
+
+inputs:
+  foo:
+    description: foo
+    required: true
+    type: boolean
+
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "hi from foo_action/myact/bar.yml"
+      shell: bash
