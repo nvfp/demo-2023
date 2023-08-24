@@ -14,4 +14,4 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: echo "hi from foo.yml"
+    - run: echo "hi from myaction/action.yml"

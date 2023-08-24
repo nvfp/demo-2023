@@ -6,5 +6,11 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+        
+        ## didnt work
+    #   - uses: actions/checkout@v3  # this is required
+    #   - uses: ./.github/actions/foo.yml
+        
+        ## 
       - uses: actions/checkout@v3  # this is required
-      - uses: ./.github/actions/foo.yml
+      - uses: ./.github/actions/myaction
