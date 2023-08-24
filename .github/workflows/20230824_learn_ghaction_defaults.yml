@@ -6,4 +6,5 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3  # this is required
       - uses: ./.github/actions/foo.yml
