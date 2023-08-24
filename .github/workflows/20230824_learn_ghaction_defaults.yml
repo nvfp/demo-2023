@@ -1,0 +1,9 @@
+name: learn using defaults
+
+on: push
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/foo.yml
