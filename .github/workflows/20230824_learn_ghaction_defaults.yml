@@ -1,5 +1,5 @@
 ## loc: .github/workflows/
-name: learn using defaults
+name: learn using defaults, and local action importing
 
 on: push
 
@@ -13,9 +13,9 @@ jobs:
     #   - uses: ./.github/actions/foo.yml
         
         ## works fine
-    #   - uses: actions/checkout@v3  # this is required
-    #   - uses: ./.github/actions/myaction
-        
-        ## 
       - uses: actions/checkout@v3  # this is required
-      - uses: ./.github/actions/myaction/action.yml
+      - uses: ./.github/actions/myaction
+        
+        ## didnt work too  (so, 'action.yml' works kinda like '__init__.py' in how python importing works)
+    #   - uses: actions/checkout@v3  # this is required
+    #   - uses: ./.github/actions/myaction/action.yml
