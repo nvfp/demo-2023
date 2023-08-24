@@ -12,7 +12,9 @@ inputs:
     type: boolean
 
 
-## Also learn using `defaults`
+## Also learn using `defaults`.
+## ref: https://github.com/orgs/community/discussions/46670 .
+## Conclusion (aug 24, 2023): cant use `defaults`, all steps in `steps` need `shell: bash` manually.
 
 
 ## failed
