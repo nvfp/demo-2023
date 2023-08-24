@@ -43,11 +43,22 @@ inputs:
 
 
 
+## failed
+# runs:
+#   defaults:
+#     run:
+#       shell: bash
+#   using: 'composite'
+#   steps:
+#     - run: echo "hi from myaction/action.yml"
+
+
+
 ## 
 runs:
-  defaults:
-    run:
-      shell: bash
   using: 'composite'
   steps:
+    defaults:
+      run:
+        shell: bash
     - run: echo "hi from myaction/action.yml"
