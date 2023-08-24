@@ -24,11 +24,11 @@ inputs:
 
 
 ## works fine
-# runs:
-#   using: 'composite'
-#   steps:
-#     - run: echo "hi from myaction/action.yml"
-#       shell: bash
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "hi from myaction/action.yml"
+      shell: bash
 
 
 
@@ -54,11 +54,11 @@ inputs:
 
 
 
-## 
-runs:
-  using: 'composite'
-  steps:
-    defaults:
-      run:
-        shell: bash
-    - run: echo "hi from myaction/action.yml"
+## failed
+# runs:
+#   using: 'composite'
+#   steps:
+#     defaults:
+#       run:
+#         shell: bash
+#     - run: echo "hi from myaction/action.yml"

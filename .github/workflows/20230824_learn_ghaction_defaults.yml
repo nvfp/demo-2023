@@ -1,3 +1,4 @@
+## loc: .github/workflows/
 name: learn using defaults
 
 on: push
@@ -11,6 +12,10 @@ jobs:
     #   - uses: actions/checkout@v3  # this is required
     #   - uses: ./.github/actions/foo.yml
         
+        ## works fine
+    #   - uses: actions/checkout@v3  # this is required
+    #   - uses: ./.github/actions/myaction
+        
         ## 
       - uses: actions/checkout@v3  # this is required
-      - uses: ./.github/actions/myaction
+      - uses: ./.github/actions/myaction/action.yml
