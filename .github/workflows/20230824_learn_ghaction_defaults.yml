@@ -24,6 +24,10 @@ jobs:
       # - uses: ./.github/actions/myaction
 
 
+      ## failed
+      # - uses: actions/checkout@v3  # this is required
+      # - uses: ./.github/foo_action/myact/bar.yml
+
       ## 
       - uses: actions/checkout@v3  # this is required
-      - uses: ./.github/foo_action/myact/bar.yml
+      - uses: ./.github/foo_action/myact2/
