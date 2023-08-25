@@ -12,5 +12,12 @@ jobs:
     ## works fine
     # uses: ./.github/workflows/foo.yml
 
+    ## failed
+    # uses: ./.github/myaction/foo.yml
+
     ## 
-    uses: ./.github/myaction/foo.yml
+    uses: ./.github/workflows/abcd/foo.yml
+
+  
+
+## learning ref: https://stackoverflow.com/questions/73026597/github-actions-suddenly-throwing-no-version-specified-for-reusable-workflows-t

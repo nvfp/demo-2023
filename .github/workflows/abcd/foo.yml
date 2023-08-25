@@ -1,0 +1,9 @@
+name: called workflow
+on: workflow_call
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hi from .github/workflows/abcd/foo.yml"
+      - run: echo "hi again"
+      - run: echo "hi again.."
