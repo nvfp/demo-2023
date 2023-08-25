@@ -4,4 +4,10 @@ on: push
 
 jobs:
   run:
-    uses: ./.github/foo.yml
+    
+    ## This one failed.
+    ## Ref: https://docs.github.com/en/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow
+    # uses: ./.github/foo.yml
+
+    ## 
+    uses: ./.github/workflows/foo.yml
