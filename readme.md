@@ -1,4 +1,4 @@
-just trying out stuff here, doing some experiments and proof of concepts to really get what's going on.
+Testing repo for trying things out, experimenting, and proofs of concepts.
 
 > **TIP**
 this is TIP
