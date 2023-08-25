@@ -9,5 +9,8 @@ jobs:
     ## Ref: https://docs.github.com/en/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow
     # uses: ./.github/foo.yml
 
+    ## works fine
+    # uses: ./.github/workflows/foo.yml
+
     ## 
-    uses: ./.github/workflows/foo.yml
+    uses: ./.github/myaction/foo.yml
