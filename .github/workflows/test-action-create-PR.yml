@@ -13,6 +13,7 @@ jobs:
       # pull-requests: write  # update: this one didnt work
       contents: write  # this one is the one that's working
       pull-requests: write  # update: This one is also needed; 'contents' for pushing the branch, and 'this' for making PR.
+      checks: write
     steps:
       - uses: actions/checkout@v3
       # - run: git branch
