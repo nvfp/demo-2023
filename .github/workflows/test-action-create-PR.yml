@@ -20,8 +20,8 @@ jobs:
       # - run: git branch
 
       - uses: scapeville/action-create-PR@main
-        with:
+        # with:
           # name: foo
-          title: foo
+          # title: foo
 
       # - run: git branch
