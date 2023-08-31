@@ -27,6 +27,8 @@ jobs:
           # title: foo  # dev-docs: initially, this was for 
           git_name: testing action-create-PR
           git_email: nicho@scapeville.com
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       # - run: git branch
 
