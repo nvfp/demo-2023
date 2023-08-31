@@ -15,11 +15,10 @@ jobs:
       - uses: actions/checkout@v3
       - run: echo $(date +'%Y%m%d_%H%M%S') > foo123123.txt
       - uses: scapeville/action-create-PR@main
-        # with:
+        with:
         #   git_name: 
         #   git_email: 
-        #   PR_title: 
+          PR_title: foo bar baz
         env:
           GH_TOKEN: ${{ github.token }}
 
-          
