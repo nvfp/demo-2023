@@ -5,12 +5,12 @@ on:
     branches:
       - main
 
+## dev-docs: there's no option for defaults runs-on
+# defaults:
+#   runs-on: ubuntu-latest
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - uses: scapeville/action-PyCICD@main
-
-
-
-      
