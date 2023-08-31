@@ -1,0 +1,27 @@
+name: test action-create-PR
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # - run: git branch
+
+      ## dev-docs: We don't have to explicitly tell users to 'create a branch first then make the changes', we can handle that for them.
+      # - uses: scapeville/action-create-PR/makebranch@main
+      #   with:
+      #     name: foo
+      
+      # - run: git branch
+
+      - uses: scapeville/action-create-PR@main
+        with:
+          # name: foo
+          title: foo
+
+      # - run: git branch
