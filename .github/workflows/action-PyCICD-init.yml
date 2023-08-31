@@ -1,0 +1,15 @@
+name: PyCICD init
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: default branch name
+        default: main
+        required: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.branch }}
