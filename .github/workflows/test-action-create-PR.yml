@@ -9,7 +9,8 @@ jobs:
   run:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      # contents: write  # dev-docs: gives error: pull request create failed: GraphQL: Resource not accessible by integration (createPullRequest)
+      pull-requests: write
     steps:
       - uses: actions/checkout@v3
       # - run: git branch
