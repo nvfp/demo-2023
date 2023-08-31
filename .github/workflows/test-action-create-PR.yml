@@ -17,5 +17,3 @@ jobs:
       - uses: scapeville/action-create-PR@main
         env:
           GH_TOKEN: ${{ github.token }}
-
-          
