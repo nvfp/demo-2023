@@ -31,7 +31,7 @@ jobs:
       
       # - run: git branch
 
-      # - run: echo $(date +'%Y%m%d_%H%M%S') > foo123123.txt
+      - run: echo $(date +'%Y%m%d_%H%M%S') > foo123123.txt
 
       - uses: scapeville/action-create-PR@main
         with:
