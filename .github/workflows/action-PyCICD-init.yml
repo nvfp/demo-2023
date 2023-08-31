@@ -3,7 +3,7 @@ name: PyCICD init
 on:
   workflow_dispatch:
     inputs:
-      branch:
+      BRANCH:
         description: default branch name
         default: main
         required: true
@@ -12,4 +12,6 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ inputs.branch }}
+      - uses: scapeville/action-PyCICD/init@main
+        with:
+          BRANCH: ${{ inputs.BRANCH }}
