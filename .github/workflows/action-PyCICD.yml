@@ -2,4 +2,5 @@ name: testing pycicd
 on: push
 jobs:
   run:
-    uses: scapeville/action-PyCICD/.github/workflows/test123.yml@latest
+    # uses: scapeville/action-PyCICD/.github/workflows/test123.yml@main
+    uses: scapeville/action-PyCICD/test123.yml@main
