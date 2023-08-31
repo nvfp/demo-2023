@@ -12,6 +12,7 @@ jobs:
       # contents: write  # dev-docs: gives error: pull request create failed: GraphQL: Resource not accessible by integration (createPullRequest)
       # pull-requests: write  # update: this one didnt work
       contents: write  # this one is the one that's working
+      pull-requests: write  # update: This one is also needed; 'contents' for pushing the branch, and 'this' for making PR.
     steps:
       - uses: actions/checkout@v3
       # - run: git branch
